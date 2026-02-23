@@ -20,6 +20,39 @@
     color: white;
     border-radius: 8px;
   }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates 2 equal columns */
+    gap: 20px;                             /* The "slightly apart" spacing */
+    max-width: 600px;                      /* Total width of the grid */
+    margin: 20px auto;                     /* Centers the grid on the page */
+  }
+.box-text {
+    color: #333;
+    font-weight: bold;
+  .my-box {
+    background-color: white;
+    border: 2px solid #ff5733;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column; /* Stacks image on top of text */
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .my_box img {
+    width: 100%;           /* Makes image fit box width */
+    height: 150px;         /* Fixed height for uniformity */
+    object-fit: cover;     /* Prevents image stretching */
+    border-radius: 10px;
+    margin-bottom: 10px;   /* Space between image and text */
+  }
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+  }
+  
 </style>
 </head>
 <body>
@@ -32,6 +65,29 @@
     countries alot, every 3 years which is pretty cool. I also like a kebab shop that is 
     located like 300~500ms away from my home. I get to school by public transport but my school
     is pretty far away so it takes like an hour and a half, which in my opinion is quite annoying.
+  </div>
+  <div class="grid-container">
+    
+    <div class="my-box">
+      <img src="https://via.placeholder.com/150" alt="Hobby 1">
+      <div class="box-text">My Favorite Hobby</div>
+    </div>
+
+    <div class="my-box">
+      <img src="https://via.placeholder.com/150" alt="Hobby 2">
+      <div class="box-text">My Pets</div>
+    </div>
+
+    <div class="my-box">
+      <img src="https://via.placeholder.com/150" alt="Hobby 3">
+      <div class="box-text">Favorite Food</div>
+    </div>
+
+    <div class="my-box">
+      <img src="https://via.placeholder.com/150" alt="Hobby 4">
+      <div class="box-text">Travel Goals</div>
+    </div>
+
   </div>
 
 </body>
