@@ -2,8 +2,39 @@
 <html>
 <head>
 <style>
-  /* This ensures padding doesn't push the width out */
-  * {
+  .tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #ddd;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.tab-button.active {
+  background-color: #ff5733;
+  color: white;
+}
+
+/* Hide all tab content by default */
+.tab-content {
+  display: none;
+}
+
+/* Show content when it has the 'active' class */
+.tab-content.active {
+  display: block;
+}
+  
+  {
     box-sizing: border-box;
   }
 
@@ -23,7 +54,7 @@
   .my-box {
     width: 80%;           
     max-width: 1000px;     
-    min-height: 200px; /* Changed to min-height so text doesn't overflow */
+    min-height: 200px;
     background-color: #4CAF50; 
     margin: 0 auto;      
     display: flex;
@@ -34,13 +65,12 @@
     padding: 20px;
   }
 
-  /* The Grid Container - Matches the width of .my-box exactly */
   .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
     gap: 20px;                             
-    width: 80%;           /* Match the top box */
-    max-width: 1000px;    /* Match the top box */
+    width: 80%;     
+    max-width: 1000px;    
     margin: 20px auto;    
   }
 
@@ -57,7 +87,7 @@
 
   .my_box img {
     width: 100%;           
-    aspect-ratio: 16 / 9;  /* Forces all images to the same shape */
+    aspect-ratio: 16 / 9;  
     object-fit: cover;     
     border-radius: 10px;
     margin-bottom: 10px;   
@@ -86,6 +116,28 @@
     is pretty far away so it takes like an hour and a half, 
     which in my opinion is quite annoying.
   </div>
+  <div class="tabs">
+  <button class="tab-button active" onclick="openTab(event, 'hobbies')">Hobbies</button>
+  <button class="tab-button" onclick="openTab(event, 'travel')">Travel</button>
+</div>
+
+<div id="hobbies" class="tab-content active">
+  <div class="grid-container">
+    <a href="https://www.minecraft.net" class="my_box" style="text-decoration: none;">
+      <img src="your-image-url.jpg" alt="Minecraft">
+      <div class="box-text">Minecraft Modding Info</div>
+    </a>
+    </div>
+</div>
+
+<div id="travel" class="tab-content">
+  <div class="grid-container">
+    <a href="https://www.google.com/travel" class="my_box" style="text-decoration: none;">
+      <img src="travel-image.jpg" alt="Travel">
+      <div class="box-text">Countries I've Lived In</div>
+    </a>
+  </div>
+</div>
   <div class="grid-container">
     
     <div class="my_box">
@@ -110,6 +162,25 @@
     </div>
 
   </div>
+  <script>
+function openTab(evt, tabName) {
+  // Hide all elements with class="tab-content"
+  var content = document.getElementsByClassName("tab-content");
+  for (var i = 0; i < content.length; i++) {
+    content[i].classList.remove("active");
+  }
+
+  // Remove the class "active" from all tab buttons
+  var buttons = document.getElementsByClassName("tab-button");
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("active");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
+</script>
 
 </body>
 </html>
