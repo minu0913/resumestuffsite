@@ -1,37 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
 <style>
-  /* Global Box Sizing */
+  /* Global Box Sizing & Smooth Scroll */
   * {
     box-sizing: border-box;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
+    background-color: #f8f9fa;
     margin: 0;
-    padding: 0; /* Changed to 0 so hero hits edges */
+    padding: 0;
+    color: #333;
   }
 
   /* Hero Section */
   .hero-section {
     position: relative;
-    height: 300px;
+    height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: #1a1a1a;
+    background: linear-gradient(135px, #1a1a1a 0%, #333 100%);
   }
 
   .hero-title {
     position: relative;
     z-index: 2;
     color: white;
-    font-size: 3rem;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
+    margin: 0;
   }
 
   .animation-container {
@@ -43,89 +52,113 @@
     z-index: 1;
   }
 
+  /* Smoother, more organic floating circles */
   .circle {
     position: absolute;
-    width: 150px;
-    height: 150px;
-    background: rgba(0, 150, 255, 0.3);
+    width: 180px;
+    height: 180px;
+    background: rgba(0, 150, 255, 0.25);
     border-radius: 50%;
-    filter: blur(50px);
-    animation: float 6s infinite ease-in-out;
+    filter: blur(60px);
+    animation: float 12s infinite ease-in-out;
   }
 
   @keyframes float {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(50px, 20px); }
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -30px) scale(1.1); }
+    66% { transform: translate(-30px, 20px) scale(0.9); }
   }
 
   /* Intro Box */
   .my-box {
-    width: 80%;           
-    max-width: 1000px;     
-    min-height: 200px;
-    background-color: #4CAF50; 
-    margin: 40px auto; /* 40px space on top and bottom */
+    width: 85%;           
+    max-width: 900px;     
+    background: #4CAF50; 
+    margin: 40px auto;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    line-height: 1.6;
+    font-size: 1.1rem;
   }
 
   /* Tabs */
   .tabs {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 15px;
+    margin-bottom: 30px;
   }
 
   .tab-button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     cursor: pointer;
-    background-color: #ddd;
+    background-color: #e0e0e0;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     font-weight: bold;
-    transition: 0.3s;
+    color: #555;
+    transition: all 0.3s ease;
+  }
+
+  .tab-button:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
   }
 
   .tab-button.active {
     background-color: #ff5733;
     color: white;
+    box-shadow: 0 4px 10px rgba(255, 87, 51, 0.3);
   }
 
+  /* Tab Content Animation */
   .tab-content {
     display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
   }
 
   .tab-content.active {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* Grid Layout */
   .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    gap: 20px;                               
-    width: 80%;     
+    gap: 25px;                                
+    width: 85%;      
     max-width: 1000px;    
-    margin: 20px auto 50px auto;    
+    margin: 0 auto 60px auto;    
   }
 
   .my_box {
     background-color: white;
-    border: 2px solid #ff5733;
+    border: 1px solid #eee;
     border-radius: 15px;
-    padding: 15px;
+    padding: 20px;
     display: flex;
     flex-direction: column; 
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy smooth effect */
   }
 
-  /* The trick to make one box wide */
+  /* Card Hover Effect */
+  .my_box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    border-color: #ff5733;
+  }
+
   .special-box {
     grid-column: span 2;
   }
@@ -135,12 +168,20 @@
     aspect-ratio: 16 / 9;  
     object-fit: cover;     
     border-radius: 10px;
-    margin-bottom: 10px;   
+    margin-bottom: 15px;   
   }
 
   .box-text {
-    color: #333;
-    font-weight: bold;
+    color: #222;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* Responsive Fix */
+  @media (max-width: 600px) {
+    .grid-container { grid-template-columns: 1fr; }
+    .special-box { grid-column: span 1; }
+    .hero-title { font-size: 2.2rem; }
   }
 </style>
 </head>
@@ -148,16 +189,16 @@
 
 <header class="hero-section">
   <div class="animation-container">
-    <div class="circle" style="top: 10%; left: 20%;"></div>
-    <div class="circle" style="bottom: 10%; right: 20%; animation-delay: 2s;"></div>
+    <div class="circle" style="top: 10%; left: 15%;"></div>
+    <div class="circle" style="bottom: 5%; right: 15%; animation-delay: -3s; background: rgba(255, 87, 51, 0.15);"></div>
   </div>
   <h1 class="hero-title">Welcome to My Site</h1>
 </header>
 
 <div class="my-box">
-  This is a test page where I am experimenting with my resume website.
-  I am into Minecraft coding/modding, and I move countries every 3 years! 
-  I also have a favorite kebab shop just 500m away.
+  I'm a Minecraft modder and global traveler! I move countries every 3 years, 
+  which keeps life interesting. Currently, I'm perfecting my Java skills and 
+  scouting the best local kebab shops.
 </div>
 
 <div class="tabs">
@@ -169,15 +210,15 @@
   <div class="grid-container">
     <div class="my_box special-box">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5baG2-m0DVGA8Pe001Z9Eok3hdYN-I--p7A&s" alt="Modding">
-      <div class="box-text">Featured: Minecraft Modding is my passion</div>
+      <div class="box-text">Featured: Minecraft Modding & Logic</div>
     </div>
     <div class="my_box">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5baG2-m0DVGA8Pe001Z9Eok3hdYN-I--p7A&s" alt="Hobby">
-      <div class="box-text">Playing Survival</div>
+      <div class="box-text">Survival Challenges</div>
     </div>
     <div class="my_box">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5baG2-m0DVGA8Pe001Z9Eok3hdYN-I--p7A&s" alt="Hobby">
-      <div class="box-text">Learning Java</div>
+      <div class="box-text">Java Development</div>
     </div>
   </div>
 </div>
@@ -186,30 +227,43 @@
   <div class="grid-container">
     <div class="my_box special-box">
       <img src="https://mma.prnewswire.com/media/1000223/Agoda_travel_survey.jpg?p=facebook" alt="Travel Featured">
-      <div class="box-text">Moving countries every 3 years has taught me so much.</div>
+      <div class="box-text">Global Living: A new home every 1,095 days.</div>
     </div>
     <div class="my_box">
       <img src="https://mma.prnewswire.com/media/1000223/Agoda_travel_survey.jpg?p=facebook" alt="Travel">
-      <div class="box-text">Adapting to new cultures</div>
+      <div class="box-text">Cultural Adaptation</div>
     </div>
     <div class="my_box">
       <img src="https://mma.prnewswire.com/media/1000223/Agoda_travel_survey.jpg?p=facebook" alt="Travel">
-      <div class="box-text">Seeing the world</div>
+      <div class="box-text">Exploring Local Cuisines</div>
     </div>
   </div>
 </div>
 
 <script>
 function openTab(evt, tabName) {
+  // Hide all contents with a slight delay for smooth transition feel
   var content = document.getElementsByClassName("tab-content");
   for (var i = 0; i < content.length; i++) {
     content[i].classList.remove("active");
+    content[i].style.display = "none";
   }
+
+  // Remove active class from buttons
   var buttons = document.getElementsByClassName("tab-button");
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].classList.remove("active");
   }
-  document.getElementById(tabName).classList.add("active");
+
+  // Show the specific tab and add active class
+  const activeTab = document.getElementById(tabName);
+  activeTab.style.display = "block";
+  
+  // Use a timeout to trigger the CSS opacity transition
+  setTimeout(() => {
+    activeTab.classList.add("active");
+  }, 10);
+
   evt.currentTarget.classList.add("active");
 }
 </script>
