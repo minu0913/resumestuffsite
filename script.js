@@ -1,4 +1,17 @@
 
+const btn = document.getElementById('color-button');
+
+
+btn.addEventListener('click', function() {
+
+    if (document.body.style.backgroundColor === 'black') {
+        document.body.style.backgroundColor = 'white';
+        document.body.style.color = 'black';
+    } else {
+        document.body.style.backgroundColor = 'black';
+        document.body.style.color = 'white';
+    }
+});
 function openTab(evt, tabName) {
   var content = document.getElementsByClassName("tab-content");
   for (var i = 0; i < content.length; i++) {
