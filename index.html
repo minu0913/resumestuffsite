@@ -328,29 +328,7 @@
 </div>
 
 
-<script>
-function openTab(evt, tabName) {
-  var content = document.getElementsByClassName("tab-content");
-  for (var i = 0; i < content.length; i++) {
-    content[i].classList.remove("active");
-    content[i].style.display = "none";
-  }
 
-  var buttons = document.getElementsByClassName("tab-button");
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove("active");
-  }
-
-  const activeTab = document.getElementById(tabName);
-  activeTab.style.display = "block";
-  
-  setTimeout(() => {
-    activeTab.classList.add("active");
-  }, 10);
-
-  evt.currentTarget.classList.add("active");
-}
-</script>
 <script src="script.js"></script>
 </body>
 </html>
