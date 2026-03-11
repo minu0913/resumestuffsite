@@ -1,4 +1,30 @@
 
+.hobby-layout {
+  display: flex;
+  align-items: center; 
+  gap: 20px;          
+  text-align: left;  
+}
+
+
+#yt-logo {
+  width: 120px;   
+  height: auto;
+  border-radius: 50%;
+}
+
+.hobby-text {
+  flex: 1;             
+  line-height: 1.6;
+}
+
+
+@media (max-width: 600px) {
+  .hobby-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+}
 .card img {
     width: 100%;
     max-height: 250px;
